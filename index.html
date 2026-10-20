@@ -206,9 +206,9 @@ function addProduct(root,index){
 function loadModel(index,file){
  const root=new THREE.Group();addProduct(root,index);
  const path='./models/';
- new MTLLoader().setPath(path).load(file+'.mtl',materials=>{
+ new MTLLoader().setPath("./").load(file+'.mtl',materials=>{
   materials.preload();
-  new OBJLoader().setMaterials(materials).setPath(path).load(file+'.obj',object=>{
+  new OBJLoader().setMaterials(materials).setPath("./").load(file+'.obj',object=>{
    const bounds=new THREE.Box3().setFromObject(object),size=bounds.getSize(new THREE.Vector3()),center=bounds.getCenter(new THREE.Vector3());
    object.position.sub(center);
    const maxDim=Math.max(size.x,size.y,size.z);
